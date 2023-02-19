@@ -30,5 +30,14 @@ const listRef = document.querySelector(".gallery");
 listRef.insertAdjacentHTML("afterbegin", "hello");
 console.log(listRef);
 
-for (const item of images) {
-}
+listRef.insertAdjacentHTML(
+  "afterbegin",
+  images.map((item) => {
+    const listItem = document.createElement("li");
+    const img = document.createElement("img");
+    img.src = item.url;
+    img.alt = item.alt;
+    listItem.append(img);
+    return listItem.outerHTML;
+  })
+);
